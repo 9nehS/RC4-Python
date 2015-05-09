@@ -5,9 +5,11 @@ This is a simple implementation of RC4 cipher referring to Wikipedia: http://en.
 
 The keys and plaintext are ASCII, the keystream and ciphertext are in hexadecimal.
 
-Plain.txt : plaintext   
-Hex.txt : ciphertext  
-Key.txt : keys  
-KeyStream.txt : keystream  
+    Usage: $ ./RC4.py filename encrypt/decrypt [keyfile]  
+      e.g. $ ./RC4.py plain.txt encrypt key.txt  
+           $ ./RC4.py hex.txt decrypt key.txt  
 
-When running this program, enter 1 to encrypt (convert plaintext to ciphertext), 2 to decrypt (convert ciphertext to plaintext).
+              plain.txt : plaintext   
+              hex.txt : ciphertext  
+              key.txt : keys  
+              keystream.txt : keystream 
