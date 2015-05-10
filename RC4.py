@@ -15,16 +15,16 @@ class Text(object):
     def text_to_bytes(self):
 
 	byteList = []
-	f = open(self.filename, 'rb')
 
-	while True:
-	    byte = f.read(1)
-	    if len(byte) == 0:
-		break
-	    else:
-		byteList.append(ord(byte))
-
+	f = open(self.filename, 'r')
+	s = f.read()
 	f.close()
+
+	# on Windows, default coding for Chinese is GBK
+	# s = s.decode('gbk').encode('utf-8')
+	for byte in s:
+	    byteList.append(ord(byte))
+
 	return byteList
 
     def hex_to_bytes(self):
@@ -42,10 +42,15 @@ class Text(object):
 
     def bytes_to_text(self, ByteList):
 
-	f = open(self.filename, 'wb')
-
+	s = ''
 	for byte in ByteList:
-	    f.write(chr(byte))
+	    s += chr(byte)
+	
+	f = open(self.filename, 'w')
+
+	# on Windows, default coding for Chinese is GBK
+	# s = s.decode('utf-8').encode('gbk')
+	f.write(s)
 
 	f.close()
 
